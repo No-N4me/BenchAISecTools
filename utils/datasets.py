@@ -1,9 +1,12 @@
 import datasets
 
-def load_dataset(name: str, split: str):
+def load_dataset(name: str, split: str, subset: str = ""):
     """Load a dataset from hugging face"""
-    dataset = datasets.load_dataset(name, split=split)
-    print(f"Split {split} of size {len(dataset)} from {name} loaded !")
+    if subset != "":
+        dataset = datasets.load_dataset(name, subset, split=split)
+    else:
+        dataset = datasets.load_dataset(name, split=split)
+    print(f"Split '{split}' of size {len(dataset)} from '{name}' loaded !")
     return dataset
 
 
