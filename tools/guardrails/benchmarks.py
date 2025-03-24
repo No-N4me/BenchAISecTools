@@ -19,7 +19,7 @@ def bench_pii(dataset: str, split: str, max_split_size: int, preferred_language:
 
 
 def bench_jailbreak(dataset: str, split: str, max_split_size: int) -> EvaluationMetrics:
-    print(f"Preparing dataset for PII Evaluation...")
+    print(f"Preparing dataset for GuardRails Jailbreak Evaluation...")
     dataset = load_dataset(dataset, split)
     
     dataset = dataset.select(range(min(len(dataset), max_split_size)))

@@ -19,11 +19,11 @@ def bench_pii(dataset: str, split: str, max_split_size: int, preferred_language:
 
 
 def bench_toxicity(dataset: str, split: str, max_split_size: int, subset: str, threshold: float) -> EvaluationMetrics:
-    print(f"Preparing dataset for PII Evaluation...")
+    print(f"Preparing dataset for LLMGuard Toxicity Evaluation...")
     dataset = load_dataset(dataset, split, subset)
     dataset = dataset.select(range(min(len(dataset), max_split_size)))
-    print(f"Running LLMGuard PII Evaluation...")
+    print(f"Running LLMGuard Toxicity Evaluation...")
     
     metrics: EvaluationMetrics = evaluate_toxicity(dataset, threshold)
-    print(f"Finished LLMGuard PII Evaluation!")
+    print(f"Finished LLMGuard Toxicity Evaluation!")
     return metrics
