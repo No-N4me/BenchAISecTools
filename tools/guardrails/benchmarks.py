@@ -1,8 +1,11 @@
 from common.metrics import EvaluationMetrics
 from utils.datasets import load_dataset, get_ai4privacy_to_presidio_mapping
 
+from .validators.financialtone import evaluate_financial_tone
 from .validators.pii import evaluate_pii_detection
 from .validators.jailbreak import evaluate_jailbreak
+
+from datasets import load_from_disk
 
 def bench_pii(dataset: str, split: str, max_split_size: int, preferred_language: str, entities: list[str]) -> EvaluationMetrics:
     print(f"Preparing dataset for PII Evaluation...")
@@ -27,4 +30,15 @@ def bench_jailbreak(dataset: str, split: str, max_split_size: int) -> Evaluation
     
     metrics: EvaluationMetrics = evaluate_jailbreak(dataset)
     print(f"Finished GuardRails Jailbreak Evaluation!")
+    return metrics
+
+def bench_financial_tone(dataset: str, split: str, max_split_size: int) -> EvaluationMetrics:
+    print(f"Preparing dataset for GuardRails FinancialTone Evaluation...")
+    dataset = load_from_disk(dataset, split)
+    
+    dataset = dataset.select(range(min(len(dataset), max_split_size)))
+    print(f"Running GuardRails FinancialTone Evaluation...")
+    
+    metrics: EvaluationMetrics = evaluate_financial_tone(dataset)
+    print(f"Finished GuardRails FinancialTone Evaluation!")
     return metrics
