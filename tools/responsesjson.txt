@@ -1,0 +1,182 @@
+$ python tools/generation.py 
+/home/jovyan/BenchAISecTools/tools/generation.py:9: LangChainDeprecationWarning: The class `Ollama` was deprecated in LangChain 0.3.1 and will be removed in 1.0.0. An updated version of the class exists in the :class:`~langchain-ollama package and should be used instead. To use it run `pip install -U :class:`~langchain-ollama` and import as `from :class:`~langchain_ollama import OllamaLLM``.
+  llm = Ollama(model='llama3.1', temperature=0.8)
+>> Donne moi 30 lignes
+Voici une base de données avec 30 lignes :
+```json
+[
+    {
+        "masked_text": "L'auteur a écrit un roman intitulé « The Great Gatsby », mais je ne sais pas qui est vraiment l'auteur.",
+        "unmasked_text": "L'auteur a écrit un roman intitulé « The Great Gatsby », mais je ne sais pas qui est vraiment F. Scott Fitzgerald.",
+        "privacy_mask": {"PERSON": "F. Scott Fitzgerald"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Vous pouvez me joindre à l'adresse email : john.doe@email.com ou au téléphone : +33 1 23 45 67 89.",
+        "unmasked_text": "Vous pouvez me joindre à l'adresse email : jean.dupont@email.com ou au téléphone : +33 1 23 45 67 89.",
+        "privacy_mask": {"EMAIL_ADDRESS": "jean.dupont@email.com", "PHONE_NUMBER": "+33 1 23 45 67 89"},
+        "labels": [[0, 54]]
+    },
+    {
+        "masked_text": "Le site web de l'entreprise est disponible à l'adresse : https://www.example.org.",
+        "unmasked_text": "Le site web de l'entreprise est disponible à l'adresse : https://www.google.com.",
+        "privacy_mask": {"ORGANIZATION": "Google"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La carte de crédit a été utilisée pour effectuer une transaction d'un montant de 100€.",
+        "unmasked_text": "La carte de crédit Visa a été utilisée pour effectuer une transaction d'un montant de 100€.",
+        "privacy_mask": {"CREDIT_CARD": "Visa"},
+        "labels": [[0, 34]]
+    },
+    {
+        "masked_text": "L'IBAN est : FR76 3000 5000 0001 2345 6789 0123 4567.",
+        "unmasked_text": "L'IBAN est : FR76 3000 5000 0001 2345 6789 0123 4567 (compte BNP Paribas).",
+        "privacy_mask": {"IBAN_CODE": "FR76 3000 5000 0001 2345 6789 0123 4567", "ORGANIZATION": "BNP Paribas"},
+        "labels": [[0, 64]]
+    },
+    {
+        "masked_text": "L'adresse IP utilisée pour la connexion est : 192.168.1.1.",
+        "unmasked_text": "L'adresse IP utilisée pour la connexion est : 192.168.1.1 (résidence de l'utilisateur).",
+        "privacy_mask": {"IP_ADDRESS": "192.168.1.1", "ORGANIZATION": "Utilisateur"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La personne responsable du projet est Jean Dupont.",
+        "unmasked_text": "La personne responsable du projet est Jean Dupont (Directeur de l'entreprise).",
+        "privacy_mask": {"PERSON": "Jean Dupont", "ORGANIZATION": "Entreprise"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Le numéro de téléphone utilisé pour la communication est : +33 1 23 45 67 89.",
+        "unmasked_text": "Le numéro de téléphone utilisé pour la communication est : +33 1 23 45 67 89 (téléphone portable).",
+        "privacy_mask": {"PHONE_NUMBER": "+33 1 23 45 67 89", "ORGANIZATION": "Portable"},
+        "labels": [[0, 54]]
+    },
+    {
+        "masked_text": "L'adresse email utilisée pour la communication est : jean.dupont@email.com.",
+        "unmasked_text": "L'adresse email utilisée pour la communication est : jean.dupont@email.com (compte professionnel).",
+        "privacy_mask": {"EMAIL_ADDRESS": "jean.dupont@email.com", "ORGANIZATION": "Professionnel"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La personne qui a effectué la transaction est : Marie Dupond.",
+        "unmasked_text": "La personne qui a effectué la transaction est : Marie Dupont ( Employée de l'entreprise).",
+        "privacy_mask": {"PERSON": "Marie Dupont", "ORGANIZATION": "Entreprise"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Le site web utilisé pour la transaction est : https://www.example.org.",
+        "unmasked_text": "Le site web utilisé pour la transaction est : https://www.amazon.fr.",
+        "privacy_mask": {"ORGANIZATION": "Amazon"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La carte de crédit utilisée pour la transaction est : Visa.",
+        "unmasked_text": "La carte de crédit utilisée pour la transaction est : Mastercard.",
+        "privacy_mask": {"CREDIT_CARD": "Mastercard"},
+        "labels": [[0, 34]]
+    },
+    {
+        "masked_text": "L'IBAN utilisé pour la transaction est : FR76 3000 5000 0001 2345 6789 0123 4567.",
+        "unmasked_text": "L'IBAN utilisé pour la transaction est : FR76 3000 5000 0001 2345 6789 0123 4567 (compte BNP Paribas).",
+        "privacy_mask": {"IBAN_CODE": "FR76 3000 5000 0001 2345 6789 0123 4567", "ORGANIZATION": "BNP Paribas"},
+        "labels": [[0, 64]]
+    },
+    {
+        "masked_text": "L'adresse IP utilisée pour la connexion est : 192.168.1.1.",
+        "unmasked_text": "L'adresse IP utilisée pour la connexion est : 192.168.1.1 (résidence de l'utilisateur).",
+        "privacy_mask": {"IP_ADDRESS": "192.168.1.1", "ORGANIZATION": "Utilisateur"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La personne responsable du projet est Jean Dupont.",
+        "unmasked_text": "La personne responsable du projet est Jean Dupont (Directeur de l'entreprise).",
+        "privacy_mask": {"PERSON": "Jean Dupont", "ORGANIZATION": "Entreprise"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Le numéro de téléphone utilisé pour la communication est : +33 1 23 45 67 89.",
+        "unmasked_text": "Le numéro de téléphone utilisé pour la communication est : +33 1 23 45 67 89 (téléphone portable).",
+        "privacy_mask": {"PHONE_NUMBER": "+33 1 23 45 67 89", "ORGANIZATION": "Portable"},
+        "labels": [[0, 54]]
+    },
+    {
+        "masked_text": "L'adresse email utilisée pour la communication est : jean.dupont@email.com.",
+        "unmasked_text": "L'adresse email utilisée pour la communication est : jean.dupont@email.com (compte professionnel).",
+        "privacy_mask": {"EMAIL_ADDRESS": "jean.dupont@email.com", "ORGANIZATION": "Professionnel"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La personne qui a effectué la transaction est : Marie Dupond.",
+        "unmasked_text": "La personne qui a effectué la transaction est : Marie Dupont ( Employée de l'entreprise).",
+        "privacy_mask": {"PERSON": "Marie Dupont", "ORGANIZATION": "Entreprise"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Le site web utilisé pour la transaction est : https://www.example.org.",
+        "unmasked_text": "Le site web utilisé pour la transaction est : https://www.amazon.fr.",
+        "privacy_mask": {"ORGANIZATION": "Amazon"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La carte de crédit utilisée pour la transaction est : Visa.",
+        "unmasked_text": "La carte de crédit utilisée pour la transaction est : Mastercard.",
+        "privacy_mask": {"CREDIT_CARD": "Mastercard"},
+        "labels": [[0, 34]]
+    },
+    {
+        "masked_text": "L'IBAN utilisé pour la transaction est : FR76 3000 5000 0001 2345 6789 0123 4567.",
+        "unmasked_text": "L'IBAN utilisé pour la transaction est : FR76 3000 5000 0001 2345 6789 0123 4567 (compte BNP Paribas).",
+        "privacy_mask": {"IBAN_CODE": "FR76 3000 5000 0001 2345 6789 0123 4567", "ORGANIZATION": "BNP Paribas"},
+        "labels": [[0, 64]]
+    },
+    {
+        "masked_text": "L'adresse IP utilisée pour la connexion est : 192.168.1.1.",
+        "unmasked_text": "L'adresse IP utilisée pour la connexion est : 192.168.1.1 (résidence de l'utilisateur).",
+        "privacy_mask": {"IP_ADDRESS": "192.168.1.1", "ORGANIZATION": "Utilisateur"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La personne responsable du projet est Jean Dupont.",
+        "unmasked_text": "La personne responsable du projet est Jean Dupont (Directeur de l'entreprise).",
+        "privacy_mask": {"PERSON": "Jean Dupont", "ORGANIZATION": "Entreprise"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Le numéro de téléphone utilisé pour la communication est : +33 1 23 45 67 89.",
+        "unmasked_text": "Le numéro de téléphone utilisé pour la communication est : +33 1 23 45 67 89 (téléphone portable).",
+        "privacy_mask": {"PHONE_NUMBER": "+33 1 23 45 67 89", "ORGANIZATION": "Portable"},
+        "labels": [[0, 54]]
+    },
+    {
+        "masked_text": "L'adresse email utilisée pour la communication est : jean.dupont@email.com.",
+        "unmasked_text": "L'adresse email utilisée pour la communication est : jean.dupont@email.com (compte professionnel).",
+        "privacy_mask": {"EMAIL_ADDRESS": "jean.dupont@email.com", "ORGANIZATION": "Professionnel"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La personne qui a effectué la transaction est : Marie Dupond.",
+        "unmasked_text": "La personne qui a effectué la transaction est : Marie Dupont ( Employée de l'entreprise).",
+        "privacy_mask": {"PERSON": "Marie Dupont", "ORGANIZATION": "Entreprise"},
+        "labels": [[0, 36]]
+    },
+    {
+        "masked_text": "Le site web utilisé pour la transaction est : https://www.example.org.",
+        "unmasked_text": "Le site web utilisé pour la transaction est : https://www.amazon.fr.",
+        "privacy_mask": {"ORGANIZATION": "Amazon"},
+        "labels": [[0, 44]]
+    },
+    {
+        "masked_text": "La carte de crédit utilisée pour la transaction est : Visa.",
+        "unmasked_text": "La carte de crédit utilisée pour la transaction est : Mastercard.",
+        "privacy_mask": {"CREDIT_CARD": "Mastercard"},
+        "labels": [[0, 34]]
+    },
+    {
+        "masked_text": "L'IBAN utilisé pour la transaction est : FR76 3000 5000 0001 2345 6789 0123 4567.",
+        "unmasked_text": "L'IBAN utilisé pour la transaction est : FR76 3000 5000 0001 2345 6789 0123 4567 (compte BNP Paribas).",
+        "privacy_mask": {"IBAN_CODE": "FR76 3000 5000 0001 2345 6789 0123 4567", "ORGANIZATION": "BNP Paribas"},
+        "labels": [[0, 64]]
+    }
+]

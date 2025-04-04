@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage
 
 #llm = Ollama(model='deepseek-r1:1.5b')
-llm = Ollama(model='llama3.1')
+llm = Ollama(model='llama3.1', temperature=0.8)
 
 chat_template = ChatPromptTemplate([
     ("system", """
@@ -15,6 +15,8 @@ chat_template = ChatPromptTemplate([
             
             **Règles d'or :**
             - **Sois créatif et diversifie tes exemples !**
+            - **Ne mets jamais (X entrées supplémentaires) dans ta réponse** 
+            - **Répond juste avec un tableau**
             
             **Actions :**
         - Analyse la demande de l'utilisateur et génère une base de données avec ces colonnes :
@@ -23,16 +25,8 @@ chat_template = ChatPromptTemplate([
           - `privacy_mask` : Dictionnaire avec le type de masque utilisé et son texte associé (format Python dictionary).
       - `labels` : Positionnement des labels dans le texte, c'est une liste des début et fin des entités PII avec leurs privacy mask.
         
-        **Format des réponses avec un exemple:**
-        ```
-        | masked_text | unmasked_text | privacy_mask | labels |  
-        |-------------|---------------|--------------|-------|
-        | L'entreprise ORGANIZATION a envoyé un email à EMAIL pour obtenir plus d'informations sur le projet. | L'entreprise Banque populaire a envoyé un email à jack@mail.fr pour obtenir plus d'informations sur le projet.| [['ORGANIZATION','Banqe populaire'], ['EMAIL','jack@mail.fr']] | [[13,29,'ORGANIZATION'],[38,62,'EMAIL']] |
-
-        ```
-        
         **Format des réponses :**
-        - Utilise le Markdown pour une présentation claire et agréable.
+        - Utilise un format json.
         - Les bases de données doivent avoir plusieurs lignes, au minimum 10.
         - N'oublie pas de masquer les entités dans la premières colonne, voici une liste à respecter : "PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "IP_ADDRESS", "IBAN_CODE", "CREDIT_CARD","ORGANIZATION"
         

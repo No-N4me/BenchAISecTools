@@ -60,4 +60,4 @@ Voici la liste des entités sensibles masquées :
 * CREDIT_CARD : numéro de carte bancaire
 * ADRESSE : adresse
 ```
-J'espère que cela répond à vos besoins !
+
