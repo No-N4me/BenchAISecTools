@@ -1,11 +1,9 @@
-# generate_dataset.py
-
 import uuid
 import json
 import pandas as pd
 
 from langchain import LLMChain, PromptTemplate
-from langchain.llms.ollama import Ollama
+from langchain_community.llms import Ollama
 
 from pii_utils import sample_pii, mask_entities
 from datasets import Dataset
