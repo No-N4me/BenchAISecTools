@@ -68,7 +68,12 @@ def evaluate_pii_detection(dataset: Dataset, entities: list[str], sample_size: i
             metrics.increment_evaluated_prompts()
             # True Negative: No PII expected, none detected
             if sanitized_text == source_text:
-                metrics.increment_statistic("tn")
+                metrics.increment_statistic("tn", details={
+                    "text": source_text,
+                    "sanitized": sanitized_text,
+                    "found": "No PII",
+                    "expected": "No PII"
+                })
             # False Positive: No PII expected, but something detected
             else:
                 metrics.increment_statistic("fp", details={
